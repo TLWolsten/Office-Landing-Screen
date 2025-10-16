@@ -3,89 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rugby ROC - Office Display (No BBC Box)</title>
+  <title>Rugby ROC - Office Display (16:9 Optimized)</title>
   <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #0a0a0a;
-      color: #fafafa;
+    html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
+      background-color: #0a0a0a;
+      color: #fafafa;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     .container {
-      width: 95%;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      padding: 1rem 2rem;
+      box-sizing: border-box;
     }
 
-    .card {
+    .top-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .weather-card, .header-card {
       background: #18181b;
       border: 1px solid #27272a;
       border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .header-section {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .branding img {
-      height: 60px;
-      margin-right: 1rem;
-    }
-
-    .clock {
-      text-align: right;
-    }
-
-    .clock-time {
-      font-size: 1.5rem;
-      font-weight: bold;
+      padding: 1rem 1.5rem;
+      flex: 1;
+      min-width: 350px;
     }
 
     .weather-card {
       background: rgba(27, 140, 155, 0.1);
       border: 1px solid rgba(27, 140, 155, 0.2);
+      max-width: 350px;
+    }
+
+    .branding {
+      display: flex;
+      align-items: center;
+    }
+
+    .branding img {
+      height: 70px;
+      margin-right: 1rem;
+    }
+
+    .header-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .clock {
+      text-align: right;
+      font-size: 1.5rem;
     }
 
     .news-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      grid-gap: 1.5rem;
+      margin-top: 1.5rem;
+      overflow-y: auto;
+      padding-bottom: 1rem;
     }
 
     .news-card {
       background: #18181b;
       border: 1px solid #27272a;
       border-radius: 8px;
-      width: calc(33.333% - 1rem);
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
-    }
-
-    @media (max-width: 900px) {
-      .news-card { width: calc(50% - 1rem); }
-    }
-
-    @media (max-width: 600px) {
-      .news-card { width: 100%; }
+      height: 300px;
     }
 
     .news-image {
       width: 100%;
-      height: 150px;
+      height: 60%;
       object-fit: cover;
       background: #1B8C9B;
     }
 
-    .news-content { padding: 0.75rem; }
+    .news-content {
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+    }
 
     .loading, .error {
       text-align: center;
@@ -95,22 +110,24 @@
 </head>
 <body>
   <div class="container">
-    <div class="card weather-card" id="weather-widget">
-      <div class="loading">Loading weather...</div>
-    </div>
+    <div class="top-section">
+      <div class="weather-card" id="weather-widget">
+        <div class="loading">Loading weather...</div>
+      </div>
 
-    <div class="card">
-      <div class="header-section">
-        <div class="branding">
-          <img src="logo.jpg" alt="WCS Logo">
-          <div>
-            <h1>Rugby ROC</h1>
-            <p>Live News & Information</p>
+      <div class="header-card">
+        <div class="header-info">
+          <div class="branding">
+            <img src="logo.jpg" alt="WCS Logo">
+            <div>
+              <h1 style="margin: 0; font-size: 2.2rem;">Rugby ROC</h1>
+              <p style="margin: 0; color: #a1a1aa;">Live News & Information</p>
+            </div>
           </div>
-        </div>
-        <div class="clock">
-          <div class="clock-time" id="clock-time">--:--:--</div>
-          <div class="clock-date" id="clock-date">Loading...</div>
+          <div class="clock">
+            <div id="clock-time">--:--:--</div>
+            <div id="clock-date" style="font-size:1rem;color:#a1a1aa;">Loading...</div>
+          </div>
         </div>
       </div>
     </div>
@@ -179,9 +196,9 @@
           var desc = getText(items[0],'description');
           var tempMatch = desc.match(/(\d+)°C/);
           var temp = tempMatch ? tempMatch[1]+'°C' : 'N/A';
-          var html = '<div>Rugby, UK</div>'+
-                     '<div style="font-size:2rem">'+getWeatherIcon(title)+' '+temp+'</div>'+
-                     '<div>'+title+'</div>';
+          var html = '<div style="font-size:1.2rem;margin-bottom:0.5rem;">Rugby, UK</div>'+
+                     '<div style="font-size:2.5rem;">'+getWeatherIcon(title)+' '+temp+'</div>'+
+                     '<div style="font-size:1rem;color:#a1a1aa;">'+title+'</div>';
           document.getElementById('weather-widget').innerHTML = html;
         })
         .catch(function(){
@@ -196,7 +213,7 @@
           var xml = parseXML(t);
           var items = xml.getElementsByTagName('item');
           var html = '';
-          for (var i = 0; i < Math.min(9, items.length); i++) {
+          for (var i = 0; i < Math.min(12, items.length); i++) {
             var title = getText(items[i], 'title');
             var desc = getText(items[i], 'description');
             var imageUrl = '';
