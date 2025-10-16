@@ -3,84 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rugby ROC - Office Display</title>
+  <title>Rugby ROC - Office Display (No BBC Box)</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background-color: #0a0a0a;
       color: #fafafa;
-      min-height: 100vh;
+      margin: 0;
+      padding: 0;
     }
 
     .container {
+      width: 95%;
       max-width: 1400px;
       margin: 0 auto;
-      padding: 2rem;
-    }
-
-    .top-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    @media (min-width: 1024px) {
-      .top-grid {
-        grid-template-columns: 1fr 3fr;
-      }
+      padding: 1rem;
     }
 
     .card {
       background: #18181b;
       border: 1px solid #27272a;
-      border-radius: 0.5rem;
-      padding: 1.5rem;
-    }
-
-    .header-card {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
     }
 
     .header-section {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(27, 140, 155, 0.2);
       flex-wrap: wrap;
-      gap: 1rem;
     }
 
-    .branding {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .logo {
-      height: 80px;
-      width: auto;
-    }
-
-    .title-block h1 {
-      font-size: 1.875rem;
-      font-weight: bold;
-      color: #fafafa;
-      margin-bottom: 0.25rem;
-    }
-
-    .title-block p {
-      font-size: 0.875rem;
-      color: #a1a1aa;
+    .branding img {
+      height: 60px;
+      margin-right: 1rem;
     }
 
     .clock {
@@ -88,48 +45,8 @@
     }
 
     .clock-time {
-      font-size: 1.875rem;
-      font-weight: bold;
-      color: #fafafa;
-    }
-
-    .clock-date {
-      font-size: 0.875rem;
-      color: #a1a1aa;
-      margin-top: 0.25rem;
-    }
-
-    .news-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .news-header h2 {
       font-size: 1.5rem;
       font-weight: bold;
-    }
-
-    .news-header p {
-      font-size: 0.875rem;
-      color: #a1a1aa;
-      margin-top: 0.25rem;
-    }
-
-    .last-update {
-      text-align: right;
-    }
-
-    .last-update-label {
-      font-size: 0.875rem;
-      color: #a1a1aa;
-    }
-
-    .last-update-time {
-      font-size: 1.125rem;
-      font-weight: 600;
     }
 
     .weather-card {
@@ -137,422 +54,181 @@
       border: 1px solid rgba(27, 140, 155, 0.2);
     }
 
-    .weather-location {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: #a1a1aa;
-      margin-bottom: 0.5rem;
-    }
-
-    .weather-current {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .weather-icon {
-      font-size: 3rem;
-      color: #1B8C9B;
-    }
-
-    .weather-temp {
-      font-size: 2.5rem;
-      font-weight: bold;
-    }
-
-    .weather-condition {
-      font-size: 0.875rem;
-      color: #a1a1aa;
-    }
-
-    .weather-forecast {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.75rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(27, 140, 155, 0.2);
-    }
-
-    .forecast-day {
-      text-align: center;
-    }
-
-    .forecast-day-name {
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: #a1a1aa;
-      margin-bottom: 0.25rem;
-    }
-
-    .forecast-high {
-      font-size: 0.875rem;
-      font-weight: 600;
-    }
-
-    .forecast-low {
-      font-size: 0.75rem;
-      color: #a1a1aa;
-    }
-
     .news-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      margin-top: 1.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .news-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-      }
-    }
-
-    @media (min-width: 1280px) {
-      .news-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-      }
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
     .news-card {
       background: #18181b;
       border: 1px solid #27272a;
-      border-radius: 0.5rem;
-      overflow: hidden;
+      border-radius: 8px;
+      width: calc(33.333% - 1rem);
       display: flex;
       flex-direction: column;
-      height: 260px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 900px) {
+      .news-card { width: calc(50% - 1rem); }
+    }
+
+    @media (max-width: 600px) {
+      .news-card { width: 100%; }
     }
 
     .news-image {
       width: 100%;
-      height: 55%;
+      height: 150px;
       object-fit: cover;
-      position: relative;
+      background: #1B8C9B;
     }
 
-    .news-content {
-      padding: 1rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
+    .news-content { padding: 0.75rem; }
 
-    .news-category {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #1B8C9B;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .news-title {
-      font-size: 1rem;
-      font-weight: 600;
-      line-height: 1.4;
-      margin-bottom: 0.5rem;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-    }
-
-    .news-description {
-      font-size: 0.875rem;
-      color: #a1a1aa;
-      line-height: 1.5;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      flex: 1;
-    }
-
-    .loading {
+    .loading, .error {
       text-align: center;
-      padding: 3rem;
-      color: #a1a1aa;
-    }
-
-    .error {
-      text-align: center;
-      padding: 3rem;
-      color: #ef4444;
-    }
-
-    .skeleton {
-      background: linear-gradient(90deg, #27272a 25%, #3f3f46 50%, #27272a 75%);
-      background-size: 200% 100%;
-      animation: loading 1.5s infinite;
-    }
-
-    @keyframes loading {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
-    .skeleton-card {
-      height: 260px;
-      border-radius: 0.5rem;
+      padding: 2rem;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="top-grid">
-      <!-- Weather Widget -->
-      <div>
-        <div class="card weather-card" id="weather-widget">
-          <div class="loading">Loading weather...</div>
+    <div class="card weather-card" id="weather-widget">
+      <div class="loading">Loading weather...</div>
+    </div>
+
+    <div class="card">
+      <div class="header-section">
+        <div class="branding">
+          <img src="logo.jpg" alt="WCS Logo">
+          <div>
+            <h1>Rugby ROC</h1>
+            <p>Live News & Information</p>
+          </div>
         </div>
-      </div>
-
-      <!-- Header & News Info -->
-      <div>
-        <div class="card header-card">
-          <!-- Branding and Clock -->
-          <div class="header-section">
-            <div class="branding">
-              <img src="logo.jpg" alt="West Coast South" class="logo" data-testid="img-wcs-logo">
-              <div class="title-block">
-                <h1 data-testid="text-main-title">Rugby ROC</h1>
-                <p data-testid="text-subtitle">Live News & Information</p>
-              </div>
-            </div>
-            <div class="clock">
-              <div class="clock-time" data-testid="text-current-time" id="clock-time">--:--:--</div>
-              <div class="clock-date" data-testid="text-current-date" id="clock-date">Loading...</div>
-            </div>
-          </div>
-
-          <!-- BBC Top Stories Info -->
-          <div class="news-header">
-            <div>
-              <h2>BBC Top Stories</h2>
-              <p>Latest news updates • Auto-refreshes every 5 minutes</p>
-            </div>
-            <div class="last-update">
-              <div class="last-update-label">Last updated</div>
-              <div class="last-update-time" data-testid="text-last-updated" id="last-updated">just now</div>
-            </div>
-          </div>
+        <div class="clock">
+          <div class="clock-time" id="clock-time">--:--:--</div>
+          <div class="clock-date" id="clock-date">Loading...</div>
         </div>
       </div>
     </div>
 
-    <!-- News Grid -->
     <div class="news-grid" id="news-grid">
-      <!-- Loading skeletons -->
-      <div class="skeleton skeleton-card"></div>
-      <div class="skeleton skeleton-card"></div>
-      <div class="skeleton skeleton-card"></div>
-      <div class="skeleton skeleton-card"></div>
-      <div class="skeleton skeleton-card"></div>
-      <div class="skeleton skeleton-card"></div>
-      <div class="skeleton skeleton-card"></div>
-      <div class="skeleton skeleton-card"></div>
-      <div class="skeleton skeleton-card"></div>
+      <div class="loading">Loading latest news...</div>
     </div>
   </div>
 
   <script>
-    // CORS proxy for RSS feeds (using allOrigins)
-    const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
-    const BBC_NEWS_URL = 'http://feeds.bbci.co.uk/news/rss.xml';
-    const BBC_WEATHER_URL = 'https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/2639965';
-
-    // Live Clock
-    function updateClock() {
-      const now = new Date();
-      const timeStr = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-      const dateStr = now.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-      
-      document.getElementById('clock-time').textContent = timeStr;
-      document.getElementById('clock-date').textContent = dateStr;
+    if (!window.fetch) {
+      window.fetch = function (url) {
+        return new Promise(function (resolve, reject) {
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', url);
+          xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              resolve({ text: function() { return Promise.resolve(xhr.responseText); } });
+            } else reject(new Error(xhr.statusText));
+          };
+          xhr.onerror = function () { reject(new Error('Network Error')); };
+          xhr.send();
+        });
+      };
     }
-    
+
+    var BBC_NEWS_URL = 'https://feeds.bbci.co.uk/news/rss.xml';
+    var BBC_WEATHER_URL = 'https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/2639965';
+    var CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+
+    function updateClock() {
+      var now = new Date();
+      document.getElementById('clock-time').textContent = now.toLocaleTimeString('en-GB');
+      document.getElementById('clock-date').textContent = now.toLocaleDateString('en-GB', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+    }
     setInterval(updateClock, 1000);
     updateClock();
 
-    // Last updated tracker
-    let lastUpdateTime = new Date();
-    
-    function updateLastUpdatedText() {
-      const seconds = Math.floor((Date.now() - lastUpdateTime.getTime()) / 1000);
-      let text = 'just now';
-      
-      if (seconds >= 60) {
-        const minutes = Math.floor(seconds / 60);
-        text = minutes === 1 ? '1 minute ago' : `${minutes} minutes ago`;
-      }
-      
-      document.getElementById('last-updated').textContent = text;
+    function parseXML(str) {
+      var parser = new DOMParser();
+      return parser.parseFromString(str, 'text/xml');
     }
-    
-    setInterval(updateLastUpdatedText, 1000);
 
-    // Weather icon helper
-    function getWeatherIcon(condition) {
-      const lower = condition.toLowerCase();
-      if (lower.includes('rain') || lower.includes('drizzle')) return '🌧️';
-      if (lower.includes('cloud')) return '☁️';
-      if (lower.includes('sun') || lower.includes('clear')) return '☀️';
-      if (lower.includes('snow')) return '❄️';
-      if (lower.includes('thunder') || lower.includes('storm')) return '⛈️';
-      if (lower.includes('fog') || lower.includes('mist')) return '🌫️';
+    function getText(el, tag) {
+      var node = el.getElementsByTagName(tag)[0];
+      return node ? node.textContent : '';
+    }
+
+    function getWeatherIcon(cond) {
+      var c = cond.toLowerCase();
+      if (c.indexOf('rain') > -1) return '🌧️';
+      if (c.indexOf('cloud') > -1) return '☁️';
+      if (c.indexOf('sun') > -1 || c.indexOf('clear') > -1) return '☀️';
+      if (c.indexOf('snow') > -1) return '❄️';
       return '🌤️';
     }
 
-    // Parse XML helper
-    function parseXML(xmlString) {
-      const parser = new DOMParser();
-      return parser.parseFromString(xmlString, 'text/xml');
+    function loadWeather() {
+      fetch(CORS_PROXY + encodeURIComponent(BBC_WEATHER_URL))
+        .then(function(r){ return r.text(); })
+        .then(function(t){
+          var xml = parseXML(t);
+          var items = xml.getElementsByTagName('item');
+          if (!items.length) throw new Error('No weather data');
+          var title = getText(items[0],'title');
+          var desc = getText(items[0],'description');
+          var tempMatch = desc.match(/(\d+)°C/);
+          var temp = tempMatch ? tempMatch[1]+'°C' : 'N/A';
+          var html = '<div>Rugby, UK</div>'+
+                     '<div style="font-size:2rem">'+getWeatherIcon(title)+' '+temp+'</div>'+
+                     '<div>'+title+'</div>';
+          document.getElementById('weather-widget').innerHTML = html;
+        })
+        .catch(function(){
+          document.getElementById('weather-widget').innerHTML = '<div class="error">Unable to load weather</div>';
+        });
     }
 
-    // Get text content from XML element
-    function getXMLText(element, tagName) {
-      const el = element.getElementsByTagName(tagName)[0];
-      return el ? el.textContent : '';
-    }
+    function loadNews() {
+      fetch(CORS_PROXY + encodeURIComponent(BBC_NEWS_URL))
+        .then(function(r){ return r.text(); })
+        .then(function(t){
+          var xml = parseXML(t);
+          var items = xml.getElementsByTagName('item');
+          var html = '';
+          for (var i = 0; i < Math.min(9, items.length); i++) {
+            var title = getText(items[i], 'title');
+            var desc = getText(items[i], 'description');
+            var imageUrl = '';
 
-    // Load Weather
-    async function loadWeather() {
-      try {
-        const response = await fetch(CORS_PROXY + encodeURIComponent(BBC_WEATHER_URL));
-        const xmlText = await response.text();
-        const xml = parseXML(xmlText);
-        
-        const items = xml.getElementsByTagName('item');
-        const forecast = [];
-        
-        for (let i = 0; i < Math.min(3, items.length); i++) {
-          const title = getXMLText(items[i], 'title');
-          const description = getXMLText(items[i], 'description');
-          
-          // Parse temperature from description
-          const tempMatch = description.match(/(\d+)°C/);
-          const temp = tempMatch ? tempMatch[1] + '°C' : 'N/A';
-          
-          forecast.push({
-            day: title.split(':')[0],
-            high: temp,
-            low: 'N/A'
-          });
-        }
-        
-        const currentCondition = forecast[0] ? forecast[0].day.split(':')[1]?.trim() || 'Partly Cloudy' : 'Partly Cloudy';
-        const currentTemp = forecast[0] ? forecast[0].high : '5°C';
-        
-        const weatherHtml = `
-          <div class="weather-location" data-testid="text-weather-location">Rugby, UK</div>
-          <div class="weather-current">
-            <div class="weather-icon" data-testid="icon-weather-condition">${getWeatherIcon(currentCondition)}</div>
-            <div>
-              <div class="weather-temp" data-testid="text-weather-temperature">${currentTemp}</div>
-              <div class="weather-condition" data-testid="text-weather-condition">${currentCondition}</div>
-            </div>
-          </div>
-          ${forecast.length > 0 ? `
-            <div class="weather-forecast">
-              ${forecast.slice(0, 3).map((day, index) => `
-                <div class="forecast-day" data-testid="forecast-day-${index}">
-                  <div class="forecast-day-name" data-testid="text-forecast-day-${index}">${day.day.split(':')[0]}</div>
-                  <div class="forecast-high" data-testid="text-forecast-high-${index}">${day.high}</div>
-                </div>
-              `).join('')}
-            </div>
-          ` : ''}
-        `;
-        
-        document.getElementById('weather-widget').innerHTML = weatherHtml;
-      } catch (error) {
-        console.error('Error loading weather:', error);
-        document.getElementById('weather-widget').innerHTML = '<div class="error">Unable to load weather</div>';
-      }
-    }
-
-    // Load News
-    async function loadNews() {
-      try {
-        const response = await fetch(CORS_PROXY + encodeURIComponent(BBC_NEWS_URL));
-        const xmlText = await response.text();
-        const xml = parseXML(xmlText);
-        
-        const items = xml.getElementsByTagName('item');
-        const articles = [];
-        
-        for (let i = 0; i < Math.min(9, items.length); i++) {
-          const title = getXMLText(items[i], 'title');
-          const description = getXMLText(items[i], 'description');
-          const link = getXMLText(items[i], 'link');
-          
-          // Get image URL from media:thumbnail or enclosure
-          let imageUrl = '';
-          const thumbnail = items[i].getElementsByTagName('media:thumbnail')[0];
-          if (thumbnail) {
-            imageUrl = thumbnail.getAttribute('url');
-          } else {
-            const enclosure = items[i].getElementsByTagName('enclosure')[0];
-            if (enclosure && enclosure.getAttribute('type')?.startsWith('image/')) {
-              imageUrl = enclosure.getAttribute('url');
+            var mediaThumb = items[i].getElementsByTagName('media:thumbnail')[0];
+            var mediaContent = items[i].getElementsByTagName('media:content')[0];
+            if (mediaThumb && mediaThumb.getAttribute('url')) {
+              imageUrl = mediaThumb.getAttribute('url');
+            } else if (mediaContent && mediaContent.getAttribute('url')) {
+              imageUrl = mediaContent.getAttribute('url');
+            } else {
+              var match = desc.match(/<img[^>]+src=\"([^\"]+)\"/i);
+              if (match) imageUrl = match[1];
             }
-          }
-          
-          // Extract category from title (if in brackets)
-          const categoryMatch = title.match(/\[(.*?)\]/);
-          const category = categoryMatch ? categoryMatch[1] : '';
-          const cleanTitle = title.replace(/\[.*?\]\s*/, '');
-          
-          articles.push({
-            title: cleanTitle,
-            description,
-            imageUrl,
-            category,
-            link
-          });
-        }
-        
-        if (articles.length === 0) {
-          document.getElementById('news-grid').innerHTML = '<div class="error">No news available</div>';
-          return;
-        }
 
-        const newsHtml = articles.map((article, index) => `
-          <div class="news-card" data-testid="card-news-${index}">
-            ${article.imageUrl ? `
-              <img src="${article.imageUrl}" alt="${article.title}" class="news-image" data-testid="img-news-${index}">
-            ` : `
-              <div class="news-image" style="background: linear-gradient(135deg, #1B8C9B 0%, #FFD500 100%);"></div>
-            `}
-            <div class="news-content">
-              ${article.category ? `
-                <span class="news-category" data-testid="text-category-${index}">${article.category}</span>
-              ` : ''}
-              <h3 class="news-title" data-testid="text-title-${index}">${article.title}</h3>
-              <p class="news-description" data-testid="text-description-${index}">${article.description || ''}</p>
-            </div>
-          </div>
-        `).join('');
-        
-        document.getElementById('news-grid').innerHTML = newsHtml;
-        lastUpdateTime = new Date();
-        updateLastUpdatedText();
-      } catch (error) {
-        console.error('Error loading news:', error);
-        document.getElementById('news-grid').innerHTML = '<div class="error">Unable to load news</div>';
-      }
+            html += '<div class="news-card">' +
+                      (imageUrl ? '<img src="'+imageUrl+'" class="news-image" alt="'+title+'">'
+                                : '<div class="news-image"></div>') +
+                      '<div class="news-content"><h3>'+title+'</h3><p>'+desc+'</p></div>' +
+                    '</div>';
+          }
+          document.getElementById('news-grid').innerHTML = html;
+        })
+        .catch(function(){
+          document.getElementById('news-grid').innerHTML = '<div class="error">Unable to load news</div>';
+        });
     }
 
-    // Initial load
     loadWeather();
     loadNews();
-
-    // Auto-refresh intervals
-    setInterval(loadWeather, 10 * 60 * 1000); // 10 minutes
-    setInterval(loadNews, 5 * 60 * 1000);     // 5 minutes
+    setInterval(loadWeather, 10*60*1000);
+    setInterval(loadNews, 5*60*1000);
   </script>
 </body>
 </html>
